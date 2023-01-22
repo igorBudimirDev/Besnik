@@ -268,7 +268,7 @@ nav {
       @include breakpoint(md) {
         margin: 0;
       }
-      
+
       font-weight: 500;
       margin-top: 0.7rem;
       width: 170px;
@@ -868,8 +868,10 @@ footer {
   .main {
     @include breakpoint(xl) {
       flex-direction: row;
-      width: 80%;
+      width: 75.5%;
       margin: 0 auto;
+      padding-bottom: 2rem;
+      gap: 200px;
     }
     display: flex;
     flex-direction: column;
@@ -879,6 +881,7 @@ footer {
       display: flex;
       flex-direction: column;
       margin-bottom: 1rem;
+    
       .footer-main-links {
         font-family: $secondary-font;
         font-weight: 700;
@@ -891,16 +894,25 @@ footer {
         flex-direction: column;
         font-weight: 400;
         gap: 10px;
+        @include breakpoint(lg) {
+          align-items: flex-start;
+        }
         span {
           color: $small-headings-color;
         }
         a {
-          color: $small-headings-color;
+          color: $small-links-color;
+          &:hover {
+            border-bottom: 1px solid $main-color;
+          }
         }
         .social-media-icons {
           display: flex;
           align-items: center;
           justify-content: center;
+          @include breakpoint(xl) {
+            gap: 10px;
+          }
         }
       }
     }
@@ -909,31 +921,45 @@ footer {
       flex-direction: column;
       align-items: center;
       gap: 10px;
-      span {
-        color: $small-headings-color;
-        font-size: 17px;
-      }
+      
       padding-bottom: 2rem;
     }
   }
+.footer__section span {
+  color: $ultra-small-color;
+  font-size: 14px;
+}
   .divider-1,
   .divider-2 {
     @include breakpoint(xl) {
       flex-direction: row;
       text-align: left;
       justify-content: center;
-      gap: 100px;
-      width: 45%;
     }
     display: flex;
     width: 100%;
     text-align: center;
     flex-direction: column;
   }
+  .divider-1 {
+    @include breakpoint(xl) {
+      gap: 200px;
+      width: 70%;
+    }
+  }
+  .divider-2 {
+    @include breakpoint(xl) {
+      gap: 200px;
+    }
+  }
   .footer__section {
     width: 80%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    @include breakpoint(xl) {
+      width: 75.5%;
+      margin: 0 auto;
+    }
     img {
       width: 5rem;
       @include breakpoint(xl) {
