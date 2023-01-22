@@ -9,13 +9,17 @@ $fourth-color: #002366;
 $links-color: #4f5361;
 $top-background: #e6f0ff;
 $secondary-background: #e5e5e5;
-$small-links-color: #7A7A7E;
-$ultra-small-color: #C2C2C2;
+$small-links-color: #7a7a7e;
+$ultra-small-color: #c2c2c2;
 //fonts
 $main-font: "Poppins";
 $secondary-font: "Lato";
 $third-font: "Gothic A1";
 
+//
+$main-font-weight: 500;
+
+//transition
 $transition-duration: 0.3s;
 
 $breakpoints: (
@@ -41,4 +45,38 @@ $breakpoints: (
   color: white;
   outline: 1px solid white;
   scale: 1.05;
+}
+
+//keyframes
+
+@keyframes show-phone-nav {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 80%;
+  }
+}
+@keyframes animate-phone-links {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes close-phone-nav {
+  0% {
+    width: 80%;
+  }
+  100% {
+    width: 0;
+  }
+}
+@keyframes close {
+  100% {
+    opacity: 0;
+  }
 }
