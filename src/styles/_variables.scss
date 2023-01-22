@@ -1,0 +1,27 @@
+@import "fonts";
+
+//colors
+$main-color: #000336;
+$secondary-color: #0689ff;
+$third-color: #063183;
+$small-headings-color: #687690;
+$fourth-color: #002366;
+$links-color: #4F5361;
+$top-background:  #E6F0FF;
+//fonts
+$main-font: "Poppins";
+$secondary-font: "Lato";
+$third-font: "Gothic A1";
+
+
+$breakpoints: (
+    "md": 768px,
+    "lg": 1024px,
+    "xl": 1280px,
+);
+
+@mixin breakpoint($size) {
+    @media (min-width: map-get($breakpoints, $size)) {
+        @content;
+    }
+}

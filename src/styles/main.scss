@@ -1,0 +1,879 @@
+@font-face {
+  font-family: "Quicksand";
+  src: url("../fonts/Quicksand-Regular.otf"),
+    url("../fonts/Quicksand-Regular.woff"),
+    url("../fonts/Quicksand-Regular.woff2");
+}
+
+@import "variables";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $main-font;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @include breakpoint(xl) {
+    width: 100vw;
+  }
+}
+button {
+  cursor: pointer;
+}
+a {
+  cursor: pointer;
+}
+.phone__header {
+  @include breakpoint(md) {
+    display: none;
+  }
+  width: 100%;
+  padding-top: 0.5rem;
+
+  button {
+    border: none;
+    background-color: white;
+    padding-left: 2rem;
+    cursor: pointer;
+  }
+  img {
+    width: 2.5rem;
+  }
+}
+@keyframes show-phone-nav {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 80%;
+  }
+}
+@keyframes animate-phone-links {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes close-phone-nav {
+  0% {
+    width: 80%;
+  }
+  100% {
+    width: 0;
+  }
+}
+@keyframes close {
+  100% {
+    opacity: 0;
+  }
+}
+.closegi {
+  animation-name: close;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+}
+.phone-nav-links {
+  opacity: 0;
+  animation-name: animate-phone-links;
+  animation-duration: 0.2s;
+  animation-delay: 0.1s;
+  animation-timing-function: ease in-out;
+  animation-fill-mode: forwards;
+}
+.phone-close {
+  background-color: $main-color;
+  border: none;
+}
+.phone__nav {
+  display: none;
+  flex-direction: column;
+  gap: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  background-color: $main-color;
+  &__opened {
+    animation-name: show-phone-nav;
+    animation-duration: 0.2s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+  }
+  &__closed {
+    animation-name: close-phone-nav;
+    animation-duration: 0.2s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+  }
+  &__x {
+    z-index: 999;
+    right: 0;
+    padding: 0.5rem 0.5rem 0 0;
+    position: absolute;
+    img {
+      width: 2.5rem;
+    }
+  }
+  &__main {
+    li {
+      color: white;
+      letter-spacing: 2px;
+    }
+    padding-left: 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    list-style: none;
+    color: white;
+    font-size: 1.5rem;
+    padding-top: 1rem;
+  }
+  &__sub {
+    padding-left: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    align-items: center;
+    list-style: none;
+    color: white;
+    li:nth-child(1) {
+      color: #0689ff;
+    }
+    li:nth-child(2) {
+      background-color: #0f1b4c;
+      padding: 10px 20px 10px 20px;
+      border-radius: 8px;
+    }
+  }
+}
+nav {
+  display: none;
+  @include breakpoint(md) {
+    background-color: $top-background;
+    padding-top: 47px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    .nav__left {
+      display: flex;
+      gap: 2rem;
+      img {
+        width: 6rem;
+      }
+    }
+    ul {
+      display: flex;
+      list-style: none;
+      gap: 0.5rem;
+      color: $links-color;
+      font-weight: 500;
+    }
+  }
+  @include breakpoint(xl) {
+    min-height: 100px;
+  }
+}
+.hero {
+  @include breakpoint(md) {
+    padding-top: 150px;
+    flex-direction: row;
+    align-items: center;
+    &__right {
+      margin-bottom: 200px;
+    }
+  }
+  @include breakpoint(xl) {
+    width: 100%;
+    margin: 0;
+    justify-content: space-around;
+    padding: 100px 0 0 0;
+    &__right {
+      margin: 0;
+    
+    }
+  }
+  background-color: $top-background;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 35px 0 35px; //iPhone SE
+  gap: 20px; //iPhone SE
+  &__left {
+    @include breakpoint(md) {
+      align-items: left;
+    }
+    @include breakpoint(xl) {
+      width: 35%;
+     
+    }
+    display: flex;
+    flex-direction: column; //iPhone SE
+    gap: 10px; //iPhone SE
+    h1 {
+      @include breakpoint(xl) {
+        font-size: 64px;
+      }
+      font-size: 50px;
+      color: $main-color;
+    }
+    h3 {
+      padding-left: 3px; // iPhone SE
+      font-size: 15px;
+      color: $small-headings-color;
+    }
+    h3:nth-child(1) {
+      font-weight: 500;
+      line-height: 27px;
+      letter-spacing: 0.01em;
+    }
+    h3:nth-child(3) {
+      line-height: 32px;
+      letter-spacing: 0.01em;
+      text-transform: capitalize;
+      font-weight: 400;
+    }
+    button {
+      @include breakpoint(md) {
+        margin: 0;
+      }
+      font-weight: 500;
+      margin-top: 0.7rem;
+      width: 170px;
+      background-color: $main-color;
+      color: white;
+      border: none;
+      line-height: 12px;
+      height: 50px;
+      border-radius: 12px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  &__right {
+    
+    img {
+      width: 300px;
+      @include breakpoint(xl) {
+        width: 584px;
+        
+      }
+    }
+  }
+}
+
+.clients__logo {
+ 
+  margin-top: 3rem; //iPhone SE //157px
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @include breakpoint(md) {
+    width: 100%;
+  }
+  @include breakpoint(xl) {
+    margin-top: 150px;
+  }
+  gap: 3rem;
+  &__upper {
+    @include breakpoint(md) {
+      flex-direction: row;
+      width: 100%;
+      justify-content: space-around;
+    }
+    display: flex;
+
+    flex-direction: column;
+    gap: 10px;
+    .left {
+      display: flex;
+      flex-direction: column;
+      img {
+        width: 5rem;
+        padding-left: 1px; //iPhone SE
+        padding-bottom: 0.3rem;
+        @include breakpoint(xl) {
+          width: 170px;
+          margin: 0;
+          padding: 0;
+        }
+      }
+      h3 {
+        @include breakpoint(xl) {
+          margin-top: 23px;
+        }
+        font-size: 16px;
+        color: $small-headings-color;
+        font-weight: 500;
+      }
+    }
+    .right {
+      @include breakpoint(xl) {
+        margin-top: 8px;
+      }
+      display: flex;
+      flex-direction: column;
+      img {
+        @include breakpoint(xl) {
+          width: 116px;
+        }
+        width: 5rem;
+        padding-bottom: 0.3rem;
+        padding-left: 1px; //iPhone SE
+      }
+      
+      h3 {
+        @include breakpoint(xl) {
+          margin-top: 23px;
+        }
+        font-weight: 500;
+        font-size: 16px;
+        color: $small-headings-color;
+      }
+    }
+  }
+  &__lower {
+    @include breakpoint(md) {
+      width: 100%;
+    }
+    display: flex;
+    flex-direction: column; //iPhone SE
+    gap: 10px;
+    @include breakpoint(xl) {
+      flex-direction: row;
+      width: 100%;
+    }
+    &__1 {
+      @include breakpoint(md) {
+        width: 100%;
+        flex-direction: row;
+        
+      }
+      @include breakpoint(xl) {
+        width: 38%;
+      }
+   
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    &__2 {
+      @include breakpoint(xl) {
+        flex-direction: row;
+        gap: 20px;
+        width: 40%;
+      }
+      display: flex;
+      align-items: center;
+      img:nth-child(1) {
+        margin-top: 5px;
+      }
+      img:nth-child(2) {
+        margin-bottom: 5px;
+      }
+    }
+    &__3 {
+      margin: 0 auto;
+      @include breakpoint(xl) {
+        margin: 0;
+        width: 10%;
+      }
+    }
+    img {
+      @include breakpoint(xl) {
+        width: 154px;
+      }
+      width: 10rem; //iPhone SE
+      margin: 0 auto;
+    }
+  }
+}
+
+.how__it__works {
+  @include breakpoint(md) {
+    max-width: 60%;
+    
+  }
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  &__upper {
+    @include breakpoint(xl) {
+      width: 68%;
+    }
+    h2 {
+      text-align: center;
+      color: $main-color;
+      font-size: 30px;
+      font-weight: 600;
+    }
+    h3 {
+      color: $small-headings-color;
+      font-size: 16px;
+      text-align: center;
+      font-weight: 400;
+    }
+  }
+  &__lower {
+    margin-top: 2rem;
+    @include breakpoint(xl) {
+      width: 100%;
+    }
+    @include breakpoint(md) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+     
+    }
+    @include breakpoint(md) {
+      button {
+        max-width: 50%;
+      }
+    }
+  }
+  &__cards {
+    @include breakpoint(md) {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+    @include breakpoint(xl) {
+      gap: 150px;
+    }
+  }
+  &__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    padding-top: 10px;
+    img {
+      width: 5rem;
+    }
+    &:nth-child(1) {
+      img {
+        margin-right: 1rem;
+        @include breakpoint(md){
+          margin-top: 2px;
+        }
+      }
+      a {
+        img {
+          margin-left: 0.7rem;
+        }
+      }
+    }
+    &:nth-child(2) {
+      @include breakpoint(md){
+        margin-top: 2px;
+      }
+    }
+    &:nth-child(3) {
+      img {
+        margin-left: 0.6rem;
+        @include breakpoint(md) {
+        }
+      }
+    }
+    a {
+      font-weight: 600;
+      text-decoration: none;
+      color: $secondary-color;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      img {
+        width: 2rem;
+      }
+    }
+    h3 {
+      font-weight: 500;
+      color: $small-headings-color;
+    }
+  }
+  button {
+    background-color: $main-color;
+    border-radius: 12px;
+    padding: 16px 25px 16px 26px;
+    color: white;
+    margin-top: 2rem;
+    border: none;
+    font-weight: 500;
+  }
+}
+
+.featured__properties {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+ 
+  gap: 10px;
+  &__upper {
+   @include breakpoint(xl) {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+   }
+    text-align: center;
+    h2 {
+      color: $main-color;
+      font-size: 30px;
+      font-weight: 600;
+      text-align: left;
+    }
+    h3 {
+      color: $small-headings-color;
+      font-size: 14px;
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+      font-weight: 400;
+    }
+    a {
+      text-decoration: none;
+      color: $secondary-color;
+      font-size: 14px;
+      font-weight: 600;
+    }
+  }
+  &__lower {
+    @include breakpoint(xl) {
+      display: flex;
+      gap: 30px;
+    }
+  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__card {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    height: 357px;
+    img {
+      width: 100%;
+    }
+    .card-price {
+      @include breakpoint(xl) {
+        font-size: 20px;
+      }
+      font-weight: 600;
+      color: $main-color;
+      font-weight: bold;
+      padding-top: 10px;
+      padding-left: 13px;
+    }
+    .card-location {
+      color: $small-headings-color;
+      font-size: 14px;
+      padding-top: 5px;
+      padding-left: 13px;
+      font-weight: 500;
+    }
+    .information-container {
+      padding-top: 15px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img {
+        width: 15px;
+      }
+      gap: 45px;
+      .info-wrapper {
+        span {
+          font-weight: 500;
+        }
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+    }
+  }
+}
+.neighbourhood {
+  margin-top: 15rem;
+  display: flex;
+  flex-direction: column;
+  &__upper__left__container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    img {
+      width: 90%;
+    }
+    .additional-content {
+      @include breakpoint(xl) {
+        left: 0;
+        top: -30px;
+      }
+      position: absolute;
+      top: -7rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 239px;
+      height: 252px;
+      background-color: white;
+      box-shadow: 90px 85px 100px rgba(0, 0, 0, 0.06);
+      border-radius: 0px 0px 12px 12px;
+      &__upper {
+        h4 {
+          font-weight: 500;
+        }
+        span {
+          font-weight: 400;
+        }
+        img {
+          width: 30px;
+        }
+      }
+      &__lower {
+        img {
+          width: 80%;
+        }
+      }
+    }
+  }
+  &__upper {
+    @include breakpoint(md) {
+      display: flex;
+     
+    }
+    @include breakpoint(xl) {
+      justify-content: center;
+      gap: 90px;
+    }
+  
+  }
+  &__upper__right {
+    @include breakpoint(md) {
+      max-width: 40%;
+
+    }
+    @include breakpoint(xl) {
+      max-width: 20%;
+    }
+    padding: 0px 1.5rem 0px 1.5rem;
+    h2 {
+      @include breakpoint(md) {
+        text-align: left;
+      }
+      @include breakpoint(xl) {
+        font-size: 35px;
+      }
+      font-weight: 600;
+      padding-top: 1rem;
+      color: $main-color;
+      font-size: 30px;
+      text-align: center;
+      padding-bottom: 1rem;
+    }
+    span {
+      color: $small-headings-color;
+      font-size: 13px;
+      font-weight: 400;
+    }
+  }
+  &__lower {
+    @include breakpoint(md) {
+      flex-direction: row;
+      justify-content: center;
+      gap: 100px;
+    }
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    h3 {
+      font-size: 45px;
+      color: black;
+      font-weight: 600;
+      @include breakpoint(xl) {
+        font-size: 64px;
+      }
+    }
+    span {
+      color: $small-headings-color;
+      font-size: 17px;
+      font-weight: 500;
+    }
+  }
+}
+.last__properties {
+  @include breakpoint(md) {
+    align-items: flex-end;
+    margin-top: 10rem;
+    overflow-y:visible;
+    min-height: 300px;
+  }
+  @include breakpoint(xl) {
+    width: 60%;
+    align-items: flex-start;
+  }
+  position: relative;
+  background-color: $third-color;
+  width: 85%;
+  border-radius: 20px;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 1rem 0 1rem;
+  h2 {
+    @include breakpoint(xl) {
+      padding-left: 80px;
+      margin-top: 30px;
+      font-size: 35px;
+    }
+    padding-top: 3rem;
+    color: white;
+    font-size: 27px;
+    font-weight: 600;
+    text-align: center;
+  }
+  span {
+    @include breakpoint(xl) {
+      padding-left: 80px;
+      font-size:16px;
+    }
+    padding-top: 1rem;
+    color: white;
+    font-size: 13px;
+    font-weight: 400;
+    text-align: center;
+  }
+  button {
+    @include breakpoint(xl) {
+      margin-left: 80px;
+    }
+    font-weight: 500;
+    margin-top: 1rem;
+    color: $fourth-color;
+    background-color: white;
+    border-radius: 12px;
+    width: 150px;
+    height: 50px;
+    border: none;
+    padding: 0 15px 0 15px;
+  }
+  img {
+    @include breakpoint(md) {
+      left: 0;
+      bottom: -10%;
+      overflow: hidden;
+    }
+    @include breakpoint(xl) {
+      width: 500px;
+      left: 700px;
+    }
+    position: absolute;
+    width: 70%;
+    bottom: -5rem;
+    object-fit: cover;
+  }
+}
+footer {
+  @include breakpoint(xl) {
+    width: 80%;
+    margin-top: 5rem;
+    padding-bottom: 5rem;
+  }
+  margin-top: 15rem;
+  a {
+    text-decoration: none;
+  }
+  .main {
+    @include breakpoint(xl) {
+      flex-direction: row;
+      width: 80%;
+      margin: 0 auto;
+    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    &__section {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1rem;
+      .footer-main-links {
+        font-family: $secondary-font;
+        font-weight: 700;
+        color: black;
+        margin-bottom: 1.5rem;
+        font-size: 20px;
+      }
+      &__links {
+        display: flex;
+        flex-direction: column;
+        font-weight: 400;
+        gap: 10px;
+        span {
+          color: $small-headings-color;
+        }
+        a {
+          color: $small-headings-color;
+        }
+        .social-media-icons {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+    .footer__section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      span {
+        color: $small-headings-color;
+        font-size: 17px;
+      }
+      padding-bottom: 2rem;
+    }
+  }
+  .divider-1,
+  .divider-2 {
+    @include breakpoint(xl) {
+      flex-direction: row;
+      text-align: left;
+      justify-content: center;
+      gap: 100px;
+      width: 45%;
+    }
+    display: flex;
+    width: 100%;
+    text-align: center;
+    flex-direction: column;
+  }
+  .footer__section {
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    img {
+      width: 5rem;
+      @include breakpoint(xl) {
+        width: 7rem;
+      
+      }
+    }
+  }
+}
