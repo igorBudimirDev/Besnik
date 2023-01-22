@@ -6,23 +6,37 @@ $secondary-color: #0689ff;
 $third-color: #063183;
 $small-headings-color: #687690;
 $fourth-color: #002366;
-$links-color: #4F5361;
-$top-background:  #E6F0FF;
-$secondary-background: #E5E5E5;
+$links-color: #4f5361;
+$top-background: #e6f0ff;
+$secondary-background: #e5e5e5;
 //fonts
 $main-font: "Poppins";
 $secondary-font: "Lato";
 $third-font: "Gothic A1";
 
+$transition-duration: 0.3s;
 
 $breakpoints: (
-    "md": 768px,
-    "lg": 1024px,
-    "xl": 1280px,
+  "md": 768px,
+  "lg": 1024px,
+  "xl": 1280px,
 );
 
 @mixin breakpoint($size) {
-    @media (min-width: map-get($breakpoints, $size)) {
-        @content;
-    }
+  @media (min-width: map-get($breakpoints, $size)) {
+    @content;
+  }
+}
+
+@mixin button-hover {
+  background-color: white;
+  color: $main-color;
+  outline: 1px solid $main-color;
+  scale: 1.05;
+}
+@mixin secondary-button-hover {
+  background-color: $main-color;
+  color: white;
+  outline: 1px solid white;
+  scale: 1.05;
 }

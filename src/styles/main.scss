@@ -173,11 +173,29 @@ nav {
       img {
         width: 6rem;
       }
+      li {
+        &:hover {
+          border-bottom: 1px solid $main-color;
+        }
+      }
+    }
+    .nav__right {
+      li:nth-child(1) {
+        &:hover {
+          border-bottom: 1px solid $main-color;
+        }
+      }
+      li:nth-child(2) {
+        transition: $transition-duration;
+        &:hover {
+          @include button-hover;
+        }
+      }
     }
     ul {
       display: flex;
       list-style: none;
-      gap: 0.5rem;
+      gap: 1rem;
       color: $links-color;
       font-weight: 500;
       li {
@@ -205,7 +223,6 @@ nav {
     padding: 100px 0 0 0;
     &__right {
       margin: 0;
-    
     }
   }
   background-color: $top-background;
@@ -220,7 +237,6 @@ nav {
     }
     @include breakpoint(xl) {
       width: 35%;
-     
     }
     display: flex;
     flex-direction: column; //iPhone SE
@@ -252,6 +268,7 @@ nav {
       @include breakpoint(md) {
         margin: 0;
       }
+      
       font-weight: 500;
       margin-top: 0.7rem;
       width: 170px;
@@ -263,22 +280,23 @@ nav {
       border-radius: 12px;
       margin-left: auto;
       margin-right: auto;
+      transition: $transition-duration;
+      &:hover {
+        @include button-hover;
+      }
     }
   }
   &__right {
-    
     img {
       width: 300px;
       @include breakpoint(xl) {
         width: 584px;
-        
       }
     }
   }
 }
 
 .clients__logo {
- 
   margin-top: 3rem; //iPhone SE //157px
   display: flex;
   flex-direction: column;
@@ -340,7 +358,7 @@ nav {
         padding-bottom: 0.3rem;
         padding-left: 1px; //iPhone SE
       }
-      
+
       h3 {
         @include breakpoint(xl) {
           margin-top: 23px;
@@ -367,12 +385,11 @@ nav {
       @include breakpoint(md) {
         width: 100%;
         flex-direction: row;
-        
       }
       @include breakpoint(xl) {
         width: 38%;
       }
-   
+
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -412,7 +429,6 @@ nav {
 .how__it__works {
   @include breakpoint(md) {
     max-width: 60%;
-    
   }
   margin-top: 3rem;
   display: flex;
@@ -460,7 +476,6 @@ nav {
       flex-direction: column;
       align-items: center;
       width: 100%;
-     
     }
     @include breakpoint(md) {
       button {
@@ -495,7 +510,7 @@ nav {
     &:nth-child(1) {
       img {
         margin-right: 1rem;
-        @include breakpoint(md){
+        @include breakpoint(md) {
           margin-top: 2px;
         }
       }
@@ -506,7 +521,7 @@ nav {
       }
     }
     &:nth-child(2) {
-      @include breakpoint(md){
+      @include breakpoint(md) {
         margin-top: 2px;
       }
     }
@@ -541,6 +556,10 @@ nav {
     margin-top: 2rem;
     border: none;
     font-weight: 500;
+    transition: $transition-duration;
+    &:hover {
+      @include button-hover;
+    }
   }
 }
 
@@ -548,15 +567,15 @@ nav {
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
- 
+
   gap: 10px;
   &__upper {
-   @include breakpoint(xl) {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    justify-content: space-between;
-   }
+    @include breakpoint(xl) {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      justify-content: space-between;
+    }
     text-align: center;
     h2 {
       color: $main-color;
@@ -676,7 +695,6 @@ nav {
             right: 30px;
           }
           width: 30px;
-          
         }
       }
       &__lower {
@@ -689,18 +707,15 @@ nav {
   &__upper {
     @include breakpoint(md) {
       display: flex;
-     
     }
     @include breakpoint(xl) {
       justify-content: center;
       gap: 90px;
     }
-  
   }
   &__upper__right {
     @include breakpoint(md) {
       max-width: 40%;
-
     }
     @include breakpoint(xl) {
       max-width: 20%;
@@ -767,7 +782,7 @@ nav {
   @include breakpoint(md) {
     align-items: flex-end;
     margin-top: 10rem;
-    overflow-y:visible;
+    overflow-y: visible;
     min-height: 300px;
   }
   @include breakpoint(xl) {
@@ -798,7 +813,7 @@ nav {
   span {
     @include breakpoint(xl) {
       padding-left: 80px;
-      font-size:16px;
+      font-size: 16px;
     }
     padding-top: 1rem;
     color: white;
@@ -819,6 +834,10 @@ nav {
     height: 50px;
     border: none;
     padding: 0 15px 0 15px;
+    transition: $transition-duration;
+    &:hover {
+      @include secondary-button-hover;
+    }
   }
   img {
     @include breakpoint(md) {
@@ -919,7 +938,6 @@ footer {
       width: 5rem;
       @include breakpoint(xl) {
         width: 7rem;
-      
       }
     }
   }
